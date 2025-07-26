@@ -14,7 +14,7 @@ local variants = {
     popupBackground = '#E8E8F0',
     floatingWindowBackground = '#E8E8F0',
     menuOptionBackground = '#E8D5FF',
-    
+
     mainText = '#1E1E2E',
     emphasisText = '#9655FF',
     commandText = '#1E1E2E',
@@ -23,11 +23,11 @@ local variants = {
     lineNumberText = '#5A5570',
     selectedText = '#1E1E2E',
     inactiveSelectionText = '#5A5570',
-    
+
     windowBorder = '#E8E8F0',
     focusedBorder = '#9655FF',
     emphasizedBorder = '#E8D5FF',
-    
+
     syntaxFunction = '#005F87',
     syntaxError = '#9F1239',
     syntaxKeyword = '#9655FF',
@@ -42,7 +42,7 @@ local variants = {
     syntaxOperator = '#4A4560',
     foregroundEmphasis = '#1E1E2E',
     terminalGray = '#5A5570',
-    
+
     -- Additional nyxvamp-specific colors
     cursorFg = '#F7F7FF',
     cursorBg = '#9655FF',
@@ -70,7 +70,7 @@ local variants = {
     diffDelete = '#E78284',
     diffChange = '#E5C890',
   },
-  
+
   veil = {
     -- Dark theme (veil)
     editorBackground = '#1E1E2E',
@@ -78,7 +78,7 @@ local variants = {
     popupBackground = '#1E1E2E',
     floatingWindowBackground = '#1E1E2E',
     menuOptionBackground = '#494D64',
-    
+
     mainText = '#D9E0EE',
     emphasisText = '#F5C2E7',
     commandText = '#D9E0EE',
@@ -87,11 +87,11 @@ local variants = {
     lineNumberText = '#6E6A86',
     selectedText = '#D9E0EE',
     inactiveSelectionText = '#6E6A86',
-    
+
     windowBorder = '#2E2E3E',
     focusedBorder = '#F5C2E7',
     emphasizedBorder = '#494D64',
-    
+
     syntaxFunction = '#96CDFB',
     syntaxError = '#F28FAD',
     syntaxKeyword = '#F5C2E7',
@@ -106,7 +106,7 @@ local variants = {
     syntaxOperator = '#D9E0EE',
     foregroundEmphasis = '#D9E0EE',
     terminalGray = '#6E6A86',
-    
+
     -- Additional nyxvamp-specific colors
     cursorFg = '#1E1E2E',
     cursorBg = '#F5C2E7',
@@ -134,7 +134,7 @@ local variants = {
     diffDelete = '#E78284',
     diffChange = '#E5C890',
   },
-  
+
   obsidian = {
     -- Very dark theme (obsidian)
     editorBackground = '#000A0F',
@@ -142,7 +142,7 @@ local variants = {
     popupBackground = '#0E0E10',
     floatingWindowBackground = '#0E0E10',
     menuOptionBackground = '#2E2E30',
-    
+
     mainText = '#C0C0CE',
     emphasisText = '#F28FAD',
     commandText = '#C0C0CE',
@@ -151,11 +151,11 @@ local variants = {
     lineNumberText = '#5E5A76',
     selectedText = '#C0C0CE',
     inactiveSelectionText = '#5E5A76',
-    
+
     windowBorder = '#1E1E20',
     focusedBorder = '#F28FAD',
     emphasizedBorder = '#2E2E30',
-    
+
     syntaxFunction = '#7FAFD7',
     syntaxError = '#F28FAD',
     syntaxKeyword = '#F5C2E7',
@@ -170,7 +170,7 @@ local variants = {
     syntaxOperator = '#C0C0CE',
     foregroundEmphasis = '#C0C0CE',
     terminalGray = '#5E5A76',
-    
+
     -- Additional nyxvamp-specific colors
     cursorFg = '#0E0E10',
     cursorBg = '#F28FAD',
@@ -197,21 +197,40 @@ local variants = {
     diffAdd = '#86BA75',
     diffDelete = '#D78284',
     diffChange = '#D5B880',
-  }
+  },
 }
 
--- Select the appropriate variant based on config
-local variant_name = config.variant or 'veil'
-local selected_variant = variants[variant_name] or variants.veil
+-- Function to load colors for current variant into colorscheme table
+function colorscheme.load_variant()
+  -- Clear existing colors
+  for key, _ in pairs(colorscheme) do
+    if
+      key ~= 'standardWhite'
+      and key ~= 'standardBlack'
+      and key ~= 'load_variant'
+    then
+      colorscheme[key] = nil
+    end
+  end
 
--- Apply transparency if enabled
-if config.transparent then
-  selected_variant.editorBackground = 'none'
+  -- Get current variant
+  local variant_name = config.variant or 'veil'
+  local selected_variant = variants[variant_name] or variants.veil
+
+  -- Copy colors to colorscheme table
+  for key, value in pairs(selected_variant) do
+    colorscheme[key] = value
+  end
+
+  -- Apply transparency if enabled
+  if config.transparent then
+    colorscheme.editorBackground = 'NONE'
+    colorscheme.sidebarBackground = 'NONE'
+    colorscheme.popupBackground = 'NONE'
+  end
 end
 
--- Copy all colors to the main colorscheme table
-for key, value in pairs(selected_variant) do
-  colorscheme[key] = value
-end
+-- Load default variant
+colorscheme.load_variant()
 
 return colorscheme

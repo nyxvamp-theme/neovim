@@ -1,4 +1,3 @@
 -- Nyxvamp Radiance (Light) variant
-local theme = require("nyxvamp")
-theme.setup({ variant = "radiance" })
-theme.colorscheme()
+require('nyxvamp').setup { variant = 'radiance' }
+require('nyxvamp').load()

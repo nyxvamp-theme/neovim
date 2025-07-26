@@ -48,4 +48,3 @@ function M.shade(color, value, base)
 end
 
 return M
-

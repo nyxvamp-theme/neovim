@@ -28,7 +28,7 @@ end
 
 local function set_groups()
   local bg = config.transparent and 'NONE' or colorscheme.editorBackground
-  
+
   local groups = {
     -- Base UI elements
     Normal = { fg = colorscheme.mainText, bg = bg },
@@ -62,7 +62,10 @@ local function set_groups()
     MsgArea = { link = 'Normal' },
     MoreMsg = { fg = colorscheme.info },
     NonText = { fg = colorscheme.commentText },
-    NormalFloat = { fg = colorscheme.mainText, bg = colorscheme.floatingWindowBackground },
+    NormalFloat = {
+      fg = colorscheme.mainText,
+      bg = colorscheme.floatingWindowBackground,
+    },
     NormalNC = { link = 'Normal' },
     Pmenu = { fg = colorscheme.mainText, bg = colorscheme.popupBackground },
     PmenuSel = { fg = bg, bg = colorscheme.emphasisText },
@@ -71,9 +74,18 @@ local function set_groups()
     Question = { fg = colorscheme.info },
     QuickFixLine = { fg = colorscheme.emphasisText },
     SpecialKey = { fg = colorscheme.syntaxOperator },
-    StatusLine = { fg = colorscheme.mainText, bg = colorscheme.sidebarBackground },
-    StatusLineNC = { fg = colorscheme.inactiveText, bg = colorscheme.sidebarBackground },
-    TabLine = { fg = colorscheme.inactiveText, bg = colorscheme.sidebarBackground },
+    StatusLine = {
+      fg = colorscheme.mainText,
+      bg = colorscheme.sidebarBackground,
+    },
+    StatusLineNC = {
+      fg = colorscheme.inactiveText,
+      bg = colorscheme.sidebarBackground,
+    },
+    TabLine = {
+      fg = colorscheme.inactiveText,
+      bg = colorscheme.sidebarBackground,
+    },
     TabLineFill = { link = 'TabLine' },
     TabLineSel = { fg = colorscheme.emphasisText, bg = bg },
     Search = { fg = bg, bg = colorscheme.warningText },
@@ -89,28 +101,42 @@ local function set_groups()
     WildMenu = { fg = bg, bg = colorscheme.emphasisText },
 
     -- Syntax highlighting using nyxvamp colors
-    Comment = { fg = colorscheme.commentText, italic = config.italics.comments or false },
-    
+    Comment = {
+      fg = colorscheme.commentText,
+      italic = config.italics.comments or false,
+    },
+
     Constant = { fg = colorscheme.constant },
-    String = { fg = colorscheme.stringText, italic = config.italics.strings or false },
+    String = {
+      fg = colorscheme.stringText,
+      italic = config.italics.strings or false,
+    },
     Character = { fg = colorscheme.stringText },
     Number = { fg = colorscheme.number },
     Boolean = { fg = colorscheme.boolean },
     Float = { link = 'Number' },
 
     Identifier = { fg = colorscheme.variable },
-    Function = { fg = colorscheme.syntaxFunction, bold = true, italic = config.italics.functions or false },
+    Function = {
+      fg = colorscheme.syntaxFunction,
+      bold = true,
+      italic = config.italics.functions or false,
+    },
     Method = { link = 'Function' },
     Property = { fg = colorscheme.variable },
     Field = { link = 'Property' },
     Parameter = { fg = colorscheme.variable },
-    
+
     Statement = { fg = colorscheme.syntaxKeyword, bold = true },
     Conditional = { fg = colorscheme.keywordControl, bold = true },
     Repeat = { fg = colorscheme.keywordControl, bold = true },
     Label = { fg = colorscheme.syntaxKeyword },
     Operator = { fg = colorscheme.syntaxOperator },
-    Keyword = { fg = colorscheme.syntaxKeyword, bold = true, italic = config.italics.keywords or false },
+    Keyword = {
+      fg = colorscheme.syntaxKeyword,
+      bold = true,
+      italic = config.italics.keywords or false,
+    },
     Exception = { fg = colorscheme.syntaxKeyword, bold = true },
 
     PreProc = { fg = colorscheme.syntaxKeyword },
@@ -161,55 +187,75 @@ local function set_groups()
     ['@text.uri'] = { fg = colorscheme.linkText, underline = true },
     ['@text.underline'] = { underline = true },
     ['@text.todo'] = { fg = colorscheme.warningText, bold = true },
-    
+
     ['@comment'] = { link = 'Comment' },
     ['@punctuation'] = { fg = colorscheme.punctuation },
     ['@punctuation.bracket'] = { fg = colorscheme.punctuation },
     ['@punctuation.delimiter'] = { fg = colorscheme.punctuation },
     ['@punctuation.special'] = { fg = colorscheme.stringSpecial },
-    
+
     ['@constant'] = { fg = colorscheme.constant },
     ['@constant.builtin'] = { fg = colorscheme.constantBuiltin },
-    ['@string'] = { fg = colorscheme.stringText, italic = config.italics.strings or false },
+    ['@string'] = {
+      fg = colorscheme.stringText,
+      italic = config.italics.strings or false,
+    },
     ['@string.escape'] = { fg = colorscheme.stringSpecial },
     ['@string.special'] = { fg = colorscheme.stringSpecial },
     ['@character'] = { fg = colorscheme.stringText },
     ['@number'] = { fg = colorscheme.number },
     ['@boolean'] = { fg = colorscheme.boolean },
     ['@float'] = { fg = colorscheme.number },
-    
-    ['@function'] = { fg = colorscheme.syntaxFunction, bold = true, italic = config.italics.functions or false },
+
+    ['@function'] = {
+      fg = colorscheme.syntaxFunction,
+      bold = true,
+      italic = config.italics.functions or false,
+    },
     ['@function.call'] = { fg = colorscheme.syntaxFunction, bold = true },
     ['@function.builtin'] = { fg = colorscheme.functionBuiltin, bold = true },
-    ['@parameter'] = { fg = colorscheme.variable, italic = config.italics.variables or false },
+    ['@parameter'] = {
+      fg = colorscheme.variable,
+      italic = config.italics.variables or false,
+    },
     ['@method'] = { fg = colorscheme.syntaxFunction, bold = true },
     ['@field'] = { fg = colorscheme.variable },
     ['@property'] = { fg = colorscheme.variable },
     ['@constructor'] = { fg = colorscheme.type },
-    
+
     ['@conditional'] = { fg = colorscheme.keywordControl, bold = true },
     ['@repeat'] = { fg = colorscheme.keywordControl, bold = true },
     ['@label'] = { fg = colorscheme.syntaxKeyword },
     ['@operator'] = { fg = colorscheme.syntaxOperator },
-    ['@keyword'] = { fg = colorscheme.syntaxKeyword, bold = true, italic = config.italics.keywords or false },
+    ['@keyword'] = {
+      fg = colorscheme.syntaxKeyword,
+      bold = true,
+      italic = config.italics.keywords or false,
+    },
     ['@exception'] = { fg = colorscheme.syntaxKeyword, bold = true },
-    
-    ['@variable'] = { fg = colorscheme.variable, italic = config.italics.variables or false },
+
+    ['@variable'] = {
+      fg = colorscheme.variable,
+      italic = config.italics.variables or false,
+    },
     ['@variable.builtin'] = { fg = colorscheme.variableBuiltin, italic = true },
-    ['@variable.parameter'] = { fg = colorscheme.variable, italic = config.italics.variables or false },
-    
+    ['@variable.parameter'] = {
+      fg = colorscheme.variable,
+      italic = config.italics.variables or false,
+    },
+
     ['@type'] = { fg = colorscheme.type, italic = true },
     ['@type.builtin'] = { fg = colorscheme.typeBuiltin, italic = true },
     ['@type.definition'] = { fg = colorscheme.type },
-    
+
     ['@namespace'] = { fg = colorscheme.namespace },
     ['@symbol'] = { fg = colorscheme.symbol, italic = true },
     ['@attribute'] = { fg = colorscheme.attribute },
-    
+
     ['@tag'] = { fg = colorscheme.syntaxKeyword },
     ['@tag.attribute'] = { fg = colorscheme.attribute },
     ['@tag.delimiter'] = { fg = colorscheme.punctuation },
-    
+
     -- LSP semantic tokens
     ['@lsp.type.namespace'] = { fg = colorscheme.namespace },
     ['@lsp.type.type'] = { fg = colorscheme.type },
@@ -248,11 +294,14 @@ function theme.setup(values)
     { __index = vim.tbl_extend('force', config.defaults, values) }
   )
 
+  -- Reload colorscheme colors for the new variant
+  colorscheme.load_variant()
+
   theme.bufferline = { highlights = {} }
   theme.bufferline.highlights = bufferline.highlights(config)
 end
 
-function theme.colorscheme()
+function theme.load()
   if vim.version().minor < 8 then
     vim.notify(
       'Neovim 0.8+ is required for nyxvamp colorscheme',
@@ -269,10 +318,70 @@ function theme.colorscheme()
 
   vim.g.VM_theme_set_by_colorscheme = true
   vim.o.termguicolors = true
-  vim.g.colors_name = 'nyxvamp'
 
+  -- Set the correct colorscheme name based on variant
+  local variant_name = config.variant or 'veil'
+  vim.g.colors_name = 'nyxvamp-' .. variant_name
+
+  colorscheme.load_variant()
   set_terminal_colors()
+
+  -- Apply basic syntax highlighting groups
+  local syntax_groups = {
+    Comment = { fg = colorscheme.commentText, italic = true },
+    Constant = { fg = colorscheme.constant },
+    String = { fg = colorscheme.stringText },
+    Character = { fg = colorscheme.stringText },
+    Number = { fg = colorscheme.number },
+    Boolean = { fg = colorscheme.boolean },
+    Float = { fg = colorscheme.number },
+
+    Identifier = { fg = colorscheme.variable },
+    Function = { fg = colorscheme.syntaxFunction, bold = true },
+
+    Statement = { fg = colorscheme.syntaxKeyword, bold = true },
+    Conditional = { fg = colorscheme.keywordControl, bold = true },
+    Repeat = { fg = colorscheme.keywordControl, bold = true },
+    Label = { fg = colorscheme.syntaxKeyword },
+    Operator = { fg = colorscheme.syntaxOperator },
+    Keyword = { fg = colorscheme.syntaxKeyword, bold = true },
+    Exception = { fg = colorscheme.syntaxKeyword, bold = true },
+
+    PreProc = { fg = colorscheme.syntaxKeyword },
+    Include = { fg = colorscheme.syntaxKeyword },
+    Define = { fg = colorscheme.syntaxKeyword },
+    Macro = { fg = colorscheme.syntaxKeyword },
+    PreCondit = { fg = colorscheme.syntaxKeyword },
+
+    Type = { fg = colorscheme.type },
+    StorageClass = { fg = colorscheme.syntaxKeyword },
+    Structure = { fg = colorscheme.type },
+    Typedef = { fg = colorscheme.type },
+
+    Special = { fg = colorscheme.stringSpecial },
+    SpecialChar = { fg = colorscheme.stringSpecial },
+    Tag = { fg = colorscheme.syntaxKeyword, bold = true },
+    Delimiter = { fg = colorscheme.punctuation },
+    SpecialComment = { fg = colorscheme.commentText, bold = true },
+    Debug = { fg = colorscheme.errorText },
+
+    Underlined = { underline = true },
+    Bold = { bold = true },
+    Italic = { italic = true },
+
+    Error = { fg = colorscheme.errorText },
+    Todo = { fg = colorscheme.warningText, bold = true },
+  }
+
+  for group, parameters in pairs(syntax_groups) do
+    vim.api.nvim_set_hl(0, group, parameters)
+  end
+
   set_groups()
+end
+
+function theme.colorscheme()
+  theme.load()
 end
 
 return theme

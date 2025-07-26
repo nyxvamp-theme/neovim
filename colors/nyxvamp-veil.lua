@@ -1,4 +1,3 @@
 -- Nyxvamp Veil (Dark) variant
-local theme = require("nyxvamp")
-theme.setup({ variant = "veil" })
-theme.colorscheme()
+require('nyxvamp').setup { variant = 'veil' }
+require('nyxvamp').load()
