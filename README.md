@@ -2,17 +2,22 @@
 
 a minimalist theme collection for Neovim, inspired by a blend of gothic and emo aesthetics with transfem symbolism. it combines deep purples and soft yellows with neutral tones to create strong contrasts and a comfortable coding environment that reflects individuality.
 
-<div align="center">
-
-![preview](./assets/sample-preview.png) 
-
-</div>
-
 ## variations
 
-1. **veil**: versatile theme for both day and night, featuring bright accents on a dark background.
-2. **obsidian**: dark theme for focused nighttime coding sessions.
-3. **radiance**: light theme optimized for daylight use, ensuring excellent readability.
+### veil (dark variant)
+versatile theme for both day and night, featuring bright accents on a dark background.
+
+<div align="center"><img src="./assets/nyxvamp-veil.png" alt="Nyxvamp Veil variant showcase" /></div>
+
+### obsidian (very dark variant)
+dark theme for focused nighttime coding sessions with minimal distraction.
+
+<div align="center"><img src="./assets/nyxvamp-obsidian.png" alt="Nyxvamp Obsidian variant showcase" /></div>
+
+### radiance (light variant)
+light theme optimized for daylight use, ensuring excellent readability with high contrast.
+
+<div align="center"><img src="./assets/nyxvamp-radiance.png" alt="Nyxvamp Radiance variant showcase" /></div>
 
 ## installation
 
@@ -39,16 +44,22 @@ Plug 'zoedsoupe/nyxvamp.nvim'
 
 ## usage
 
-### basic setup
+after installing the plugin through your package manager, you can use nyxvamp in several ways:
+
+### quick start
 
 ```lua
--- set the colorscheme (uses default 'veil' variant)
+-- simple setup with default settings (veil variant)
 vim.cmd.colorscheme('nyxvamp')
+```
 
--- or configure with options
+### advanced setup
+
+```lua
+-- configure with custom options
 require('nyxvamp').setup({
   variant = 'veil', -- 'radiance' (light), 'veil' (dark), 'obsidian' (very dark)
-  transparent = false,
+  transparent = false, -- enable transparency
   italics = {
     comments = true,
     keywords = true,
@@ -56,21 +67,40 @@ require('nyxvamp').setup({
     strings = true,
     variables = true,
   },
-  overrides = {}, -- custom highlight overrides
+  overrides = function()
+    return {
+      -- example: make line numbers more subtle
+      LineNr = { fg = '#5A5570' },
+      -- example: custom color for your favorite highlight group
+      ['@keyword'] = { fg = '#F5C2E7', bold = true },
+    }
+  end,
 })
 
--- then apply the colorscheme
+-- apply the colorscheme after setup
 require('nyxvamp').colorscheme()
 ```
 
 ### variant-specific colorschemes
 
-you can also use variant-specific colorschemes directly:
+you can also use variant-specific colorschemes directly without setup:
 
 ```lua
-vim.cmd.colorscheme('nyxvamp-veil')     -- dark variant
+vim.cmd.colorscheme('nyxvamp-veil')     -- dark variant (default)
 vim.cmd.colorscheme('nyxvamp-obsidian') -- very dark variant  
 vim.cmd.colorscheme('nyxvamp-radiance') -- light variant
+```
+
+### switching variants dynamically
+
+```lua
+-- switch to light theme during the day
+require('nyxvamp').setup({ variant = 'radiance' })
+require('nyxvamp').colorscheme()
+
+-- switch to dark theme at night
+require('nyxvamp').setup({ variant = 'obsidian' })
+require('nyxvamp').colorscheme()
 ```
 
 ## configuration
