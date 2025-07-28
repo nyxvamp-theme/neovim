@@ -72,12 +72,12 @@ local variants = {
   },
 
   veil = {
-    -- Dark theme (veil)
+    -- Dark theme (veil) - matches Helix exactly
     editorBackground = '#1E1E2E',
     sidebarBackground = '#302D41',
-    popupBackground = '#1E1E2E',
-    floatingWindowBackground = '#1E1E2E',
-    menuOptionBackground = '#494D64',
+    popupBackground = '#302D41',
+    floatingWindowBackground = '#302D41',
+    menuOptionBackground = '#313244',
 
     mainText = '#D9E0EE',
     emphasisText = '#F5C2E7',
@@ -88,9 +88,9 @@ local variants = {
     selectedText = '#D9E0EE',
     inactiveSelectionText = '#6E6A86',
 
-    windowBorder = '#2E2E3E',
+    windowBorder = '#313244',
     focusedBorder = '#F5C2E7',
-    emphasizedBorder = '#494D64',
+    emphasizedBorder = '#313244',
 
     syntaxFunction = '#96CDFB',
     syntaxError = '#F28FAD',
@@ -110,8 +110,8 @@ local variants = {
     -- Additional nyxvamp-specific colors
     cursorFg = '#1E1E2E',
     cursorBg = '#F5C2E7',
-    cursorLine = '#2E2E3E',
-    selection = '#494D64',
+    cursorLine = '#313244',
+    selection = '#313244',
     stringSpecial = '#F28FAD',
     constant = '#F28FAD',
     constantBuiltin = '#F28FAD',
@@ -136,12 +136,12 @@ local variants = {
   },
 
   obsidian = {
-    -- Very dark theme (obsidian)
+    -- Very dark theme (obsidian) - matches Helix exactly
     editorBackground = '#000A0F',
     sidebarBackground = '#0E0E10',
     popupBackground = '#0E0E10',
     floatingWindowBackground = '#0E0E10',
-    menuOptionBackground = '#2E2E30',
+    menuOptionBackground = '#191921',
 
     mainText = '#C0C0CE',
     emphasisText = '#F28FAD',
@@ -152,9 +152,9 @@ local variants = {
     selectedText = '#C0C0CE',
     inactiveSelectionText = '#5E5A76',
 
-    windowBorder = '#1E1E20',
+    windowBorder = '#191921',
     focusedBorder = '#F28FAD',
-    emphasizedBorder = '#2E2E30',
+    emphasizedBorder = '#191921',
 
     syntaxFunction = '#7FAFD7',
     syntaxError = '#F28FAD',
@@ -172,10 +172,10 @@ local variants = {
     terminalGray = '#5E5A76',
 
     -- Additional nyxvamp-specific colors
-    cursorFg = '#0E0E10',
+    cursorFg = '#000A0F',
     cursorBg = '#F28FAD',
-    cursorLine = '#1E1E20',
-    selection = '#2E2E30',
+    cursorLine = '#191921',
+    selection = '#191921',
     stringSpecial = '#F28FAD',
     constant = '#F28FAD',
     constantBuiltin = '#F28FAD',
