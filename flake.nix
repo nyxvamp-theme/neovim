@@ -53,12 +53,25 @@
               set relativenumber
               set termguicolors
               set background=dark
+              
+              lua << EOF
+              -- Configure treesitter for syntax highlighting
+              require'nvim-treesitter.configs'.setup {
+                highlight = {
+                  enable = true,
+                  additional_vim_regex_highlighting = false,
+                },
+                ensure_installed = {},  -- parsers are managed by nix
+              }
+              EOF
+              
               colorscheme nyxvamp-veil
             '';
 
             packages.nyxvamp = {
               start = [
                 nyxvampPlugin
+                pkgs.vimPlugins.nvim-treesitter
                 (pkgs.vimPlugins.nvim-treesitter.withPlugins (p:
                   with p; [
                     tree-sitter-lua

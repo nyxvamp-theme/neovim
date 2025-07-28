@@ -1,4 +1,4 @@
 ;; extends
 [
   (atom)
-] @property
+] @symbol
