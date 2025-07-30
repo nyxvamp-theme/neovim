@@ -27,13 +27,15 @@
               # Include essential plugin files
               pkgs.lib.hasSuffix ".lua" baseName
               || pkgs.lib.hasSuffix ".vim" baseName
-              || pkgs.lib.hasSuffix ".scm" baseName  # treesitter query files
+              || pkgs.lib.hasSuffix ".scm" baseName # treesitter query files
               || baseName == "README.md"
               || baseName == "LICENSE"
               || baseName == "LICENSE.md"
-              || type == "directory"
+              || type
+              == "directory"
               # Exclude development files
-              && !(baseName == "flake.nix" 
+              && !(baseName
+                == "flake.nix"
                 || baseName == "flake.lock"
                 || baseName == ".envrc"
                 || baseName == ".gitignore"
@@ -53,7 +55,7 @@
               set relativenumber
               set termguicolors
               set background=dark
-              
+
               lua << EOF
               -- Configure treesitter for syntax highlighting
               require'nvim-treesitter.configs'.setup {
@@ -63,9 +65,14 @@
                 },
                 ensure_installed = {},  -- parsers are managed by nix
               }
+
+              require'nyxvamp'.setup {
+                variant = 'veil',
+                transparent = true,
+              }
+
+              require('nyxvamp').colorscheme()
               EOF
-              
-              colorscheme nyxvamp-veil
             '';
 
             packages.nyxvamp = {
